@@ -1,11 +1,12 @@
 ---
-title: "Untitled"
+title: "UCL R Markdown Demonstration"
 author: "Carl Howe, RStudio"
 date: "9/12/2019"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(ggplot2)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -19,12 +20,11 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
-## Including Plots
+## Including a ggplot
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r pressure}
+theme_set(theme_minimal())
+ggplot(pressure, aes(x=temperature, y=pressure)) + geom_point() + geom_smooth()
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
