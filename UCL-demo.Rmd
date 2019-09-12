@@ -2,11 +2,21 @@
 title: "UCL R Markdown Demonstration"
 author: "Carl Howe, RStudio"
 date: "9/12/2019"
-output: html_document
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
 library(ggplot2)
+library(tufte)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -24,7 +34,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure}
+```{r fig.width=5.5, fig.height=3.5, cache=TRUE, message=FALSE}
 theme_set(theme_minimal())
 ggplot(pressure, aes(x=temperature, y=pressure)) + geom_point() + geom_smooth()
 ```
